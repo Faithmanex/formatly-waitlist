@@ -1,0 +1,88 @@
+<svg width="1440" height="900" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Dark Tablet Gradient (Slate/Dark Grey) -->
+    <linearGradient id="tabletGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1f2937;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#111827;stop-opacity:0.9" />
+    </linearGradient>
+
+    <!-- Shadow -->
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="6" />
+      <feOffset dx="0" dy="7" result="offsetblur" />
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.5" />
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- 1. Top Left - APA -->
+  <g transform="translate(150, 180) rotate(-5)">
+    <g>
+      <animateTransform attributeName="transform" type="translate" values="0 0; 0 -20; 0 0" dur="6s" repeatCount="indefinite" begin="0s" calcMode="spline" keySplines="0.4 0 0.2 1; 0.4 0 0.2 1" />
+      <!-- Changed stroke to dark grey (#374151) and text to white (#f3f4f6) -->
+      <rect width="160" height="48" rx="24" fill="url(#tabletGradient)" stroke="#374151" stroke-width="1" filter="url(#shadow)" />
+      <text x="80" y="29" font-family="'Inter', sans-serif" font-size="14" font-weight="600" fill="#f3f4f6" text-anchor="middle">APA 7th Edition</text>
+    </g>
+  </g>
+
+  <!-- 2. Top Right - MLA -->
+  <g transform="translate(1100, 200) rotate(5)">
+    <g>
+      <animateTransform attributeName="transform" type="translate" values="0 0; -10 15; 0 0" dur="8s" repeatCount="indefinite" begin="1s" calcMode="spline" keySplines="0.4 0 0.2 1; 0.4 0 0.2 1" />
+      <rect width="160" height="48" rx="24" fill="url(#tabletGradient)" stroke="#374151" stroke-width="1" filter="url(#shadow)" />
+      <text x="80" y="29" font-family="'Inter', sans-serif" font-size="14" font-weight="600" fill="#f3f4f6" text-anchor="middle">MLA 9th Edition</text>
+    </g>
+  </g>
+
+  <!-- 3. Middle Left - Chicago (Large) -->
+  <g transform="translate(80, 450) rotate(3)">
+    <g>
+      <animateTransform attributeName="transform" type="translate" values="0 0; 15 -10; 0 0" dur="7s" repeatCount="indefinite" begin="2s" calcMode="spline" keySplines="0.4 0 0.2 1; 0.4 0 0.2 1" />
+      <rect width="210" height="48" rx="24" fill="url(#tabletGradient)" stroke="#374151" stroke-width="1" filter="url(#shadow)" />
+      <text x="105" y="29" font-family="'Inter', sans-serif" font-size="14" font-weight="600" fill="#f3f4f6" text-anchor="middle">Chicago Manual of Style</text>
+    </g>
+  </g>
+
+  <!-- 4. Middle Right - Harvard -->
+  <g transform="translate(1150, 500) rotate(-4)">
+    <g>
+      <animateTransform attributeName="transform" type="translate" values="0 0; -15 -15; 0 0" dur="9s" repeatCount="indefinite" begin="1.5s" calcMode="spline" keySplines="0.4 0 0.2 1; 0.4 0 0.2 1" />
+      <rect width="100" height="48" rx="24" fill="url(#tabletGradient)" stroke="#374151" stroke-width="1" filter="url(#shadow)" />
+      <text x="50" y="29" font-family="'Inter', sans-serif" font-size="14" font-weight="600" fill="#f3f4f6" text-anchor="middle">Harvard</text>
+    </g>
+  </g>
+
+  <!-- 5. Bottom Left - IEEE -->
+  <g transform="translate(250, 650) rotate(-8)">
+    <g>
+      <animateTransform attributeName="transform" type="translate" values="0 0; 10 10; 0 0" dur="5s" repeatCount="indefinite" begin="0.5s" calcMode="spline" keySplines="0.4 0 0.2 1; 0.4 0 0.2 1" />
+      <rect width="80" height="48" rx="24" fill="url(#tabletGradient)" stroke="#374151" stroke-width="1" filter="url(#shadow)" />
+      <text x="40" y="29" font-family="'Inter', sans-serif" font-size="14" font-weight="600" fill="#f3f4f6" text-anchor="middle">IEEE</text>
+    </g>
+  </g>
+
+  <!-- 6. Bottom Right - Vancouver -->
+  <g transform="translate(950, 680) rotate(6)">
+    <g>
+      <animateTransform attributeName="transform" type="translate" values="0 0; -5 10; 0 0" dur="6.5s" repeatCount="indefinite" begin="3s" calcMode="spline" keySplines="0.4 0 0.2 1; 0.4 0 0.2 1" />
+      <rect width="120" height="48" rx="24" fill="url(#tabletGradient)" stroke="#374151" stroke-width="1" filter="url(#shadow)" />
+      <text x="60" y="29" font-family="'Inter', sans-serif" font-size="14" font-weight="600" fill="#f3f4f6" text-anchor="middle">Vancouver</text>
+    </g>
+  </g>
+
+  <!-- 7. Far Background Element (Blurred/Faint) - APA Duplicate -->
+  <g transform="translate(1250, 100) rotate(10)" opacity="0.4">
+    <g>
+      <animateTransform attributeName="transform" type="translate" values="0 0; 0 20; 0 0" dur="12s" repeatCount="indefinite" begin="0s" />
+      <g transform="scale(0.8)">
+        <rect width="160" height="48" rx="24" fill="url(#tabletGradient)" stroke="#374151" stroke-width="1" />
+        <text x="80" y="29" font-family="'Inter', sans-serif" font-size="14" font-weight="600" fill="#f3f4f6" text-anchor="middle">APA 7th Edition</text>
+      </g>
+    </g>
+  </g>
+</svg>

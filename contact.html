@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formatly | Contact Us</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="globals.css">
+    <script src="script.js" defer></script>
+    <!-- Vercel Analytics -->
+    <script defer src="/_vercel/insights/script.js"></script>
+    <style>
+        .container-content { max-width: 600px; margin: 0 auto; padding: 4rem 1.5rem; text-align: center; }
+        h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; }
+        p.lead { color: var(--text-muted); margin-bottom: 3rem; font-size: 1.1rem; }
+        .contact-card { background: var(--glass-bg); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); padding: 3rem; border-radius: 1.5rem; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.05); }
+        .email-link { display: block; font-size: 1.5rem; font-weight: 700; color: var(--text-main); text-decoration: none; margin-bottom: 2rem; }
+        .social-links { display: flex; justify-content: center; gap: 2rem; }
+        .social-links a { color: var(--text-muted); text-decoration: none; font-weight: 600; font-size: 0.875rem; transition: color 0.2s; }
+        .social-links a:hover { color: var(--text-main); }
+    </style>
+</head>
+<body>
+    <div class="bg-mesh"><div class="blob blob-1"></div><div class="blob blob-2"></div></div>
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html" class="logo">
+                <img src="graphics/logo-dark.jpg" class="logo-img light-only" alt="Formatly">
+                <img src="graphics/logo-white.jpg" class="logo-img dark-only" alt="Formatly">
+            </a>
+            <div class="nav-links">
+                <a href="updates.html">Updates</a>
+                <a href="faq.html">FAQ</a>
+                <a href="contact.html">Contact us</a>
+                <button id="themeToggle" style="background:none; border:none; cursor:pointer; color:var(--text-main); margin-left: 1rem; display:flex; align-items:center;">
+                    <svg class="sun-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M17.66 6.34l1.42-1.42"></path></svg>
+                    <svg class="moon-icon" style="display:none;" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-content">
+        <h1 class="animate-on-load">Get in Touch</h1>
+        <p class="lead animate-on-load" style="animation-delay: 0.1s;">Have questions about the waitlist or our academic formatting engine? We're here to help.</p>
+        
+        <div class="contact-card reveal">
+            <a href="mailto:hello@formatly.com" class="email-link">hello@formatly.com</a>
+            <div class="social-links">
+                <a href="#">Twitter</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">GitHub</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p style="color: var(--text-muted);">© Waitlist - A more meaningful home for research. Built for EchelNet.</p>
+        </div>
+    </footer>
+</body>
+</html>

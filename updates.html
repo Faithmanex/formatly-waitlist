@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formatly | Updates</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="globals.css">
+    <script src="script.js" defer></script>
+    <!-- Vercel Analytics -->
+    <script defer src="/_vercel/insights/script.js"></script>
+    <style>
+        .container-content { max-width: 800px; margin: 0 auto; padding: 4rem 1.5rem; }
+        h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 3rem; text-align: center; }
+        .update-card { background: var(--glass-bg); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); padding: 2rem; border-radius: 1.25rem; margin-bottom: 2rem; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); }
+        .date { font-size: 0.875rem; color: var(--text-muted); font-weight: 600; margin-bottom: 0.5rem; display: block; }
+        h2 { font-size: 1.5rem; margin-bottom: 1rem; }
+        p { color: var(--text-muted); margin-bottom: 1rem; }
+        .tag { display: inline-block; padding: 2px 8px; background: #eff6ff; color: #3b82f6; border-radius: 4px; font-size: 0.75rem; font-weight: 700; margin-bottom: 1rem; }
+    </style>
+</head>
+<body>
+    <div class="bg-mesh"><div class="blob blob-1"></div><div class="blob blob-2"></div></div>
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html" class="logo">
+                <img src="graphics/logo-dark.jpg" class="logo-img light-only" alt="Formatly">
+                <img src="graphics/logo-white.jpg" class="logo-img dark-only" alt="Formatly">
+            </a>
+            <div class="nav-links">
+                <a href="updates.html">Updates</a>
+                <a href="faq.html">FAQ</a>
+                <a href="contact.html">Contact us</a>
+                <button id="themeToggle" style="background:none; border:none; cursor:pointer; color:var(--text-main); margin-left: 1rem; display:flex; align-items:center;">
+                    <svg class="sun-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M17.66 6.34l1.42-1.42"></path></svg>
+                    <svg class="moon-icon" style="display:none;" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-content">
+        <h1 class="animate-on-load">Latest Updates</h1>
+        
+        <div class="update-card reveal">
+            <span class="date">February 9, 2026</span>
+            <span class="tag">NEW FEATURE</span>
+            <h2>AI-Powered Formatting Engine <span class="highlight">v2.0</span></h2>
+            <p>We've completely rebuilt our core formatting engine. It now supports <span class="highlight">50+ additional</span> academic styles and offers even greater precision for complex citations.</p>
+        </div>
+
+        <div class="update-card reveal">
+            <span class="date">January 28, 2026</span>
+            <span class="tag">IMPROVEMENT</span>
+            <h2>Real-time <span class="highlight">Collaborative</span> Editing</h2>
+            <p>Work with your co-authors and editors simultaneously. See changes as they happen and manage citations together in one shared document.</p>
+        </div>
+
+        <div class="update-card reveal">
+            <span class="date">January 15, 2026</span>
+            <span class="tag">SECURITY</span>
+            <h2><span class="highlight">End-to-End Encryption</span> for All Documents</h2>
+            <p>Your research privacy is our priority. All documents uploaded to Formatly are now encrypted on your device before they ever reach our servers.</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p style="color: var(--text-muted);">© Waitlist - A more meaningful home for research. Built for EchelNet.</p>
+        </div>
+    </footer>
+</body>
+</html>

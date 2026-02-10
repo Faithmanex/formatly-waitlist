@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formatly | Waitlist</title>
+    
+    <meta property="og:title" content="Formatly | Flawless Academic Formatting">
+    <meta property="og:description" content="Formatly handles every APA, MLA, and Chicago citation perfectly. Join the waitlist for the most intelligent document tool built for all researchers.">
+    <meta property="og:image" content="graphics/hero-illustration.png">
+    <meta property="og:url" content="https://formatly.com">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="globals.css">
+    <script src="script.js" defer></script>
+    <script defer src="/_vercel/insights/script.js"></script>
+
+    <style>
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .badge-live {
+            background: var(--glass-bg);
+            backdrop-filter: blur(4px);
+            border: 1px solid var(--glass-border);
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dot { width: 6px; height: 6px; background: currentColor; border-radius: 50%; }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+            max-width: 800px;
+            line-height: 1.1;
+        }
+
+        h1 span {
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .form-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            width: 100%;
+            max-width: 480px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2.5rem;
+        }
+
+        .input-group {
+            margin-bottom: 1.25rem;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+        }
+
+        input {
+            width: 100%;
+            padding: 14px 1rem;
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            border-radius: 0.75rem;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        input:focus {
+            background: #fff;
+            border-color: var(--primary);
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: #0f172a;
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.1s, background 0.2s;
+        }
+
+        [data-theme="dark"] .btn-submit {
+            background: var(--primary);
+            color: #0f172a;
+        }
+
+        .btn-submit:hover { opacity: 0.9; }
+        .btn-submit:active { transform: scale(0.98); }
+
+        .social-proof {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .avatars { display: flex; }
+        .avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            margin-left: -8px;
+            background-size: cover;
+            background-color: #e2e8f0;
+        }
+
+        @media (max-width: 640px) {
+            h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-mesh">
+        <img src="graphics/hero-bg-dark.svg" class="hero-svg-overlay light-only" alt="">
+        <img src="graphics/hero-bg-light.svg" class="hero-svg-overlay dark-only" alt="">
+    </div>
+
+    <nav>
+        <div class="nav-inner animate-on-load">
+            <a href="index.html" class="logo">
+                <img src="graphics/logo-dark.jpg" class="logo-img light-only" alt="Formatly">
+                <img src="graphics/logo-white.jpg" class="logo-img dark-only" alt="Formatly">
+            </a>
+            <div class="nav-links">
+                <a href="updates.html">Updates</a>
+                <a href="faq.html">FAQ</a>
+                <a href="contact.html">Contact us</a>
+                <button id="themeToggle" style="background:none; border:none; cursor:pointer; color:var(--text-main); margin-left: 1rem; display:flex; align-items:center;">
+                    <svg class="sun-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M17.66 6.34l1.42-1.42"></path></svg>
+                    <svg class="moon-icon" style="display:none;" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="badge-live animate-on-load">
+            <div class="dot"></div>
+            Waitlist v1 · <span class="highlight">Coming Soon</span>
+        </div>
+        
+        <h1 class="animate-on-load" style="animation-delay: 0.1s;">The software that sparks your <span>thesis</span>.</h1>
+        
+        <p class="subtitle animate-on-load" style="animation-delay: 0.2s;">
+            Formatly handles every <span class="highlight">APA, MLA, and Chicago</span> citation perfectly. Join the waitlist for the <strong>most intelligent</strong> document tool built for <strong>all researchers</strong>.
+        </p>
+
+        <div class="form-card animate-on-load" style="animation-delay: 0.3s;">
+            <form id="waitlistForm">
+                <div class="input-group">
+                    <label>Full Name</label>
+                    <input type="text" id="name" placeholder="Enter your name" required>
+                </div>
+                <div class="input-group">
+                    <label>Email</label>
+                    <input type="email" id="email" placeholder="mail@example.com" required>
+                </div>
+                <button type="submit" class="btn-submit" id="submitBtn">Join The Waitlist</button>
+                <div id="responseMsg" style="margin-top: 1rem; font-size: 0.875rem; display: none; text-align: center;"></div>
+            </form>
+        </div>
+
+        <div class="social-proof reveal">
+            <div class="avatars">
+                <div class="avatar" style="background-image: url('https://i.pravatar.cc/100?u=1')"></div>
+                <div class="avatar" style="background-image: url('https://i.pravatar.cc/100?u=2')"></div>
+                <div class="avatar" style="background-image: url('https://i.pravatar.cc/100?u=3')"></div>
+                <div class="avatar" style="background-image: url('https://i.pravatar.cc/100?u=4')"></div>
+            </div>
+            <p class="social-text">Join the <span class="highlight">50,000+ researchers</span> who have already signed up.</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© Waitlist - A more meaningful home for research. Built for EchelNet.</p>
+        </div>
+    </footer>
+
+    <script type="module">
+        const SUPABASE_URL = 'YOUR_SUPABASE_URL';
+        const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+
+        const supabaseClient = window.supabase ? supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+
+        const form = document.getElementById('waitlistForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const responseMsg = document.getElementById('responseMsg');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            if (SUPABASE_URL === 'YOUR_SUPABASE_URL') {
+                responseMsg.textContent = "Configuration required: Please add Supabase credentials.";
+                responseMsg.style.color = "#ef4444";
+                responseMsg.style.display = "block";
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Joining...";
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+
+            try {
+                const { data, error } = await supabaseClient
+                    .from('waitlist')
+                    .insert([{ full_name: name, email: email }]);
+
+                if (error) throw error;
+
+                responseMsg.textContent = "Success! You've been added to the list.";
+                responseMsg.style.color = "#10b981";
+                form.reset();
+            } catch (err) {
+                responseMsg.textContent = "Error joining. Please try again.";
+                responseMsg.style.color = "#ef4444";
+            } finally {
+                responseMsg.style.display = "block";
+                submitBtn.disabled = false;
+                submitBtn.textContent = "Join The Waitlist";
+            }
+        });
+    </script>
+</body>
+</html>

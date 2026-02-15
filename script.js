@@ -46,4 +46,113 @@ document.addEventListener('DOMContentLoaded', () => {
             moonIcon.style.display = 'none';
         }
     }
+
+    // Supabase Configuration
+    const SUPABASE_URL = 'https://chuxhdvazicuwdqwhtot.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNodXhoZHZhemljdXdkcXdodG90Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUwMzMwMTMsImV4cCI6MjA3MDYwOTAxM30.Hnp44Y6IZjJRuOzb-4_UtGx1sBBSp67MonqB_aLwxpY';
+
+    // Diagnostic log to confirm script loaded
+    console.log("script.js loaded and DOM content ready");
+
+    const supabaseClient = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+
+    if (!supabaseClient) {
+        console.error("Supabase client failed to initialize. Check if the Supabase script is loaded.");
+    }
+
+    const form = document.getElementById('waitlistForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const responseMsg = document.getElementById('responseMsg');
+
+    if (form) {
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            if (!supabaseClient) {
+                responseMsg.textContent = "Configuration error: Supabase not loaded.";
+                responseMsg.style.color = "#ef4444";
+                responseMsg.style.display = "block";
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Joining...";
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+
+            try {
+                const { data, error } = await supabaseClient
+                    .from('waitlist')
+                    .insert([{ full_name: name, email: email }]);
+
+                if (error) {
+                    // Check for duplicate key error (Postgres code 23505)
+                    if (error.code === '23505') {
+                        showSuccessState("You're already on the list!");
+                    } else {
+                        responseMsg.textContent = "Error joining. Please try again.";
+                        responseMsg.style.color = "#ef4444";
+                        responseMsg.style.display = "block";
+                    }
+                    return;
+                }
+
+                // Successful signup
+                console.log("Conversion Tracked: New Waitlist Entry");
+                showSuccessState("You're on the list!");
+                form.reset();
+
+            } catch (err) {
+                console.error("Submission error:", err);
+                responseMsg.textContent = "Something went wrong. Please try again.";
+                responseMsg.style.color = "#ef4444";
+                responseMsg.style.display = "block";
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = "Join The Waitlist";
+            }
+        });
+    }
+
+    function showSuccessState(headingText) {
+        // Smooth transition animation
+        form.style.opacity = '0';
+        setTimeout(() => {
+            form.style.display = 'none';
+            const thankYouMsg = document.getElementById('thankYouMessage');
+            thankYouMsg.querySelector('h2').textContent = headingText;
+            thankYouMsg.style.display = 'block';
+            thankYouMsg.style.opacity = '0';
+            thankYouMsg.style.transform = 'translateY(10px)';
+            
+            // Trigger reflow for animation
+            thankYouMsg.offsetHeight; 
+            
+            thankYouMsg.style.transition = 'all 0.5s ease-out';
+            thankYouMsg.style.opacity = '1';
+            thankYouMsg.style.transform = 'translateY(0)';
+        }, 300);
+    }
+
+    // Clipboard Functionality
+    const copyBtn = document.getElementById('copyBtn');
+    const copyBtnText = document.getElementById('copyBtnText');
+
+    if (copyBtn) {
+        copyBtn.addEventListener('click', () => {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                copyBtnText.textContent = "Link copied!";
+                copyBtn.style.borderColor = "var(--primary)";
+                copyBtn.style.color = "var(--primary)";
+                
+                setTimeout(() => {
+                    copyBtnText.textContent = "Copy invite link";
+                    copyBtn.style.borderColor = "var(--glass-border)";
+                    copyBtn.style.color = "var(--text-main)";
+                }, 2000);
+            });
+        });
+    }
 });

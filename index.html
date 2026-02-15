@@ -18,8 +18,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="globals.css">
-    <script src="script.js" defer></script>
-    <script defer src="/_vercel/insights/script.js"></script>
+    <script src="./script.js" defer></script>
 
     <style>
         main {
@@ -86,28 +85,64 @@
 
         label {
             display: block;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+            font-size: 0.875rem;
+            font-weight: 600;
             margin-bottom: 0.5rem;
-            color: var(--text-muted);
+            color: var(--text-main);
+            transition: color 0.2s;
         }
 
         input {
             width: 100%;
-            padding: 14px 1rem;
-            background: rgba(255, 255, 255, 0.8);
-            border: 1px solid rgba(226, 232, 240, 0.8);
-            border-radius: 0.75rem;
+            padding: 0.875rem 1rem;
+            background: var(--glass-bg);
+            border: 1.5px solid var(--glass-border);
+            border-radius: 12px;
             font-size: 1rem;
+            color: var(--text-main);
             outline: none;
-            transition: all 0.2s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        input::placeholder {
+            color: var(--text-muted);
+            opacity: 0.6;
+        }
+
+        input:hover {
+            border-color: rgba(99, 102, 241, 0.3);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
         }
 
         input:focus {
-            background: #fff;
+            background: var(--bg-main);
             border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1), 0 4px 6px rgba(0, 0, 0, 0.1);
+            transform: translateY(-1px);
+        }
+
+        input:focus + label,
+        input:not(:placeholder-shown) + label {
+            color: var(--primary);
+        }
+
+        /* Dark theme adjustments */
+        [data-theme="dark"] input {
+            background: rgba(30, 30, 30, 0.6);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        [data-theme="dark"] input:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            background: rgba(30, 30, 30, 0.8);
+        }
+
+        [data-theme="dark"] input:focus {
+            background: rgba(30, 30, 30, 0.9);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15), 0 4px 6px rgba(0, 0, 0, 0.3);
         }
 
         .btn-submit {
@@ -163,8 +198,8 @@
     <nav>
         <div class="nav-inner animate-on-load">
             <a href="index.html" class="logo">
-                <img src="graphics/logo-dark.jpg" class="logo-img light-only" alt="Formatly">
-                <img src="graphics/logo-white.jpg" class="logo-img dark-only" alt="Formatly">
+                <img src="graphics/logo-dark.svg" class="logo-img light-only" alt="Formatly">
+                <img src="graphics/logo-white.svg" class="logo-img dark-only" alt="Formatly">
             </a>
             <div class="nav-links">
                 <a href="updates.html">Updates</a>
@@ -203,6 +238,36 @@
                 <button type="submit" class="btn-submit" id="submitBtn">Join The Waitlist</button>
                 <div id="responseMsg" style="margin-top: 1rem; font-size: 0.875rem; display: none; text-align: center;"></div>
             </form>
+            
+            <!-- Success State -->
+            <div id="thankYouMessage" style="display: none; text-align: center; padding: 1rem 0;">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">🎉</div>
+                <h2 style="font-size: 1.75rem; font-weight: 800; margin-bottom: 1rem; color: var(--text-main);">You're on the list!</h2>
+                <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 2rem;">
+                    Thanks for signing up. We are building the go-to formatting tool for all students and researchers, and we can't wait to show you what Formatly can do. Keep an eye on your inbox for updates!
+                </p>
+                <div style="padding-top: 1.5rem; border-top: 1px solid var(--glass-border);">
+                    <p style="font-weight: 700; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--primary); margin-bottom: 1rem;">Invite your friends</p>
+                    <div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2rem;">
+                        <!-- X (Twitter) -->
+                        <a href="https://twitter.com/intent/tweet?text=I%20just%20joined%20the%20waitlist%20for%20Formatly%20%E2%80%93%20the%20go-to%20tool%20for%20academic%20research%20formatting.%20Check%20it%20out%20at%20https%3A%2F%2Fformatly.com" target="_blank" title="Share on X" style="text-decoration: none; color: var(--text-main); transition: transform 0.2s;">
+                            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+                        </a>
+                        <!-- WhatsApp -->
+                        <a href="https://wa.me/?text=I%20just%20joined%20the%20waitlist%20for%20Formatly%21%20It%20handles%20APA%2C%20MLA%2C%20and%20Chicago%20formatting%20perfectly%20and%20fast.%20Join%20me%20at%20https%3A%2F%2Fformatly.com" target="_blank" title="Share on WhatsApp" style="text-decoration: none; color: #25d366; transition: transform 0.2s;">
+                            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.438 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+                        </a>
+                        <!-- LinkedIn -->
+                        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://formatly.com" target="_blank" title="Share on LinkedIn" style="text-decoration: none; color: #0077b5; transition: transform 0.2s;">
+                            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.454C23.205 24 24 23.227 24 22.271V1.729C24 .774 23.205 0 22.225 0z"></path></svg>
+                        </a>
+                    </div>
+                    <button id="copyBtn" style="background: var(--glass-bg); border: 1px solid var(--glass-border); padding: 10px 20px; border-radius: 12px; font-size: 0.875rem; font-weight: 700; color: var(--text-main); cursor: pointer; display: flex; align-items: center; gap: 8px; margin: 0 auto; transition: all 0.2s;">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        <span id="copyBtnText">Copy invite link</span>
+                    </button>
+                </div>
+            </div>
         </div>
 
         <div class="social-proof reveal">
@@ -214,59 +279,270 @@
             </div>
             <p class="social-text">Join the <span class="highlight">50,000+ researchers</span> who have already signed up.</p>
         </div>
+
+        <!-- How It Works Section -->
+        <!-- How It Works Section -->
+        <div class="how-it-works animate-on-load" style="margin-top: 8rem; width: 100%; max-width: 1100px; padding: 0 1.5rem;">
+            <h2 class="section-title">How Formatly Works</h2>
+            
+            <div class="features-grid">
+                <!-- Step 1: Text Left, Image Right -->
+                <div class="feature-row reveal">
+                    <div class="feature-text">
+                        <div class="step-badge">01</div>
+                        <h3>Upload Your Draft</h3>
+                        <p>Simply drag and drop your raw thesis or paper. We support .docx, .odt, and .pdf files. Our AI instantly analyzes your document structure.</p>
+                    </div>
+                    <div class="feature-image-area">
+                        <img src="graphics/upload.svg" alt="Upload Your Draft" style="width: 100%; height: auto; border-radius: 1.5rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); border: 1px solid var(--glass-border);">
+                    </div>
+                </div>
+
+                <!-- Step 2: Image Left, Text Right -->
+                <div class="feature-row reverse reveal">
+                    <div class="feature-text">
+                        <div class="step-badge">02</div>
+                        <h3>Select Your Style</h3>
+                        <p>Choose from over 50+ academic styles including APA, MLA, Chicago, and Harvard. Formatly automatically applies the correct citation rules.</p>
+                    </div>
+                    <div class="feature-image-area">
+                        <img src="graphics/format.svg" alt="Select Your Style" style="width: 100%; height: auto; border-radius: 1.5rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); border: 1px solid var(--glass-border);">
+                    </div>
+                </div>
+
+                <!-- Step 3: Text Left, Image Right -->
+                <div class="feature-row reveal">
+                    <div class="feature-text">
+                        <div class="step-badge">03</div>
+                        <h3>Review Changes</h3>
+                        <p>We don't just fix it; we show you what changed. Review every formatting adjustment with our integrated Tracked Changes viewer.</p>
+                    </div>
+                    <div class="feature-image-area">
+                        <img src="graphics/tracked-changes.svg" alt="Review Changes" style="width: 100%; height: auto; border-radius: 1.5rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); border: 1px solid var(--glass-border);">
+                    </div>
+                </div>
+
+                <!-- Step 4: Image Left, Text Right -->
+                <div class="feature-row reverse reveal">
+                    <div class="feature-text">
+                        <div class="step-badge">04</div>
+                        <h3>Download & Submit</h3>
+                        <p>Export your perfectly formatted document in seconds. Use the extra time to focus on your research, not your margins.</p>
+                    </div>
+                    <div class="feature-image-area">
+                        <img src="graphics/download.svg" alt="Download & Submit" style="width: 100%; height: auto; border-radius: 1.5rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); border: 1px solid var(--glass-border);">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <style>
+            .section-title {
+                font-size: 2.5rem;
+                font-weight: 800;
+                margin-bottom: 5rem;
+                text-align: center;
+                background: linear-gradient(135deg, var(--text-main) 0%, var(--primary) 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
+            .features-grid {
+                display: flex;
+                flex-direction: column;
+                gap: 8rem;
+                position: relative;
+            }
+
+            /* Central Vertical Line */
+            .features-grid::before {
+                content: '';
+                position: absolute;
+                left: 50%;
+                top: 0;
+                bottom: 0;
+                width: 2px;
+                background: repeating-linear-gradient(
+                    to bottom,
+                    transparent,
+                    transparent 10px,
+                    var(--glass-border) 10px,
+                    var(--glass-border) 20px
+                );
+                transform: translateX(-50%);
+                z-index: 0;
+            }
+
+            .feature-row {
+                display: flex;
+                align-items: center;
+                gap: 6rem;
+                position: relative;
+                z-index: 1;
+            }
+            
+            /* Connecting Dots */
+            .feature-row::after {
+                content: '';
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                width: 12px;
+                height: 12px;
+                background: var(--bg-main);
+                border: 2px solid var(--primary);
+                border-radius: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 2;
+                box-shadow: 0 0 15px var(--primary);
+            }
+
+            .feature-row.reverse {
+                flex-direction: row-reverse;
+            }
+
+            .feature-text {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+            }
+
+            .feature-image-area {
+                flex: 1;
+                position: relative;
+                animation: float 6s ease-in-out infinite;
+            }
+
+            /* Adjust text alignment for reverse rows to point towards the center */
+            .feature-row.reverse .feature-text {
+                align-items: flex-end;
+                text-align: right;
+            }
+
+            /* Adjust max-width of p to keep it away from the center line */
+            .feature-text p {
+                font-size: 1.05rem;
+                line-height: 1.7;
+                color: var(--text-muted);
+                max-width: 380px;
+            }
+
+            @keyframes float {
+                0% { transform: translateY(0px); }
+                50% { transform: translateY(-12px); }
+                100% { transform: translateY(0px); }
+            }
+
+            .step-badge {
+                font-size: 0.875rem;
+                font-weight: 800;
+                color: var(--primary);
+                background: rgba(99, 102, 241, 0.1);
+                padding: 4px 12px;
+                border-radius: 100px;
+                margin-bottom: 1.5rem;
+                border: 1px solid rgba(99, 102, 241, 0.2);
+            }
+
+            .feature-text h3 {
+                font-size: 2rem;
+                font-weight: 800;
+                margin-bottom: 1rem;
+                color: var(--text-main);
+                line-height: 1.2;
+            }
+
+            .img-placeholder {
+                width: 100%;
+                aspect-ratio: 4/3;
+                background: var(--glass-bg);
+                border: 1px solid var(--glass-border);
+                border-radius: 1.5rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                color: var(--text-muted);
+                font-size: 0.875rem;
+                font-weight: 500;
+                gap: 1rem;
+                backdrop-filter: blur(10px);
+                box-shadow: 0 20px 40px -10px rgba(0,0,0,0.05);
+                transition: transform 0.3s ease;
+            }
+            
+            /* Hover effect for the image area */
+            .feature-row:hover .img-placeholder, 
+            .feature-row:hover img {
+                transform: scale(1.02);
+                border-color: var(--primary);
+                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            }
+            
+            img {
+                 transition: all 0.5s ease;
+            }
+
+            /* Scroll Reveal Animation */
+            .reveal {
+                opacity: 0;
+                transform: translateY(50px);
+                transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            }
+
+            .reveal.active {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            /* Stagger animation for feature rows */
+            .feature-row:nth-child(even).reveal {
+                animation-delay: 0.2s;
+            }
+
+            @media (max-width: 768px) {
+                .features-grid::before, .feature-row::after {
+                    display: none; /* Hide line and dots on mobile */
+                }
+
+                .feature-row, .feature-row.reverse {
+                    flex-direction: column-reverse; 
+                    gap: 3rem;
+                    text-align: center;
+                }
+                
+                .feature-row.reverse .feature-text {
+                    align-items: center;
+                    text-align: center;
+                }
+
+                .feature-text {
+                    align-items: center;
+                }
+                
+                .feature-text p {
+                    max-width: 100%;
+                }
+                
+                .features-grid {
+                    gap: 5rem;
+                }
+                
+                .feature-text h3 {
+                    font-size: 1.75rem;
+                }
+            }
+        </style>
     </main>
 
     <footer>
         <div class="container">
-            <p>© Waitlist - A more meaningful home for research. Built for EchelNet.</p>
+            <p>© Waitlist - A more meaningful home for research. Built by EchelNet.</p>
         </div>
     </footer>
 
-    <script type="module">
-        const SUPABASE_URL = 'YOUR_SUPABASE_URL';
-        const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
 
-        const supabaseClient = window.supabase ? supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
-
-        const form = document.getElementById('waitlistForm');
-        const submitBtn = document.getElementById('submitBtn');
-        const responseMsg = document.getElementById('responseMsg');
-
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            if (SUPABASE_URL === 'YOUR_SUPABASE_URL') {
-                responseMsg.textContent = "Configuration required: Please add Supabase credentials.";
-                responseMsg.style.color = "#ef4444";
-                responseMsg.style.display = "block";
-                return;
-            }
-
-            submitBtn.disabled = true;
-            submitBtn.textContent = "Joining...";
-
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-
-            try {
-                const { data, error } = await supabaseClient
-                    .from('waitlist')
-                    .insert([{ full_name: name, email: email }]);
-
-                if (error) throw error;
-
-                responseMsg.textContent = "Success! You've been added to the list.";
-                responseMsg.style.color = "#10b981";
-                form.reset();
-            } catch (err) {
-                responseMsg.textContent = "Error joining. Please try again.";
-                responseMsg.style.color = "#ef4444";
-            } finally {
-                responseMsg.style.display = "block";
-                submitBtn.disabled = false;
-                submitBtn.textContent = "Join The Waitlist";
-            }
-        });
-    </script>
 </body>
 </html>

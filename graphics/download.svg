@@ -1,0 +1,83 @@
+<svg width="800" height="500" viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.25"/>
+    </filter>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <linearGradient id="card-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1E1E1E"/>
+      <stop offset="100%" stop-color="#121212"/>
+    </linearGradient>
+    <linearGradient id="success-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+  </defs>
+
+  <style>
+    text { font-family: 'Inter', sans-serif; }
+  </style>
+
+  <rect width="800" height="500" rx="20" fill="#0F0F0F"/>
+
+  <rect x="20" y="20" width="760" height="60" rx="12" fill="#1E1E1E" stroke="#333"/>
+  <circle cx="50" cy="50" r="6" fill="#FF5F57"/>
+  <circle cx="75" cy="50" r="6" fill="#FEBC2E"/>
+  <circle cx="100" cy="50" r="6" fill="#28C840"/>
+  
+  <text x="140" y="60" fill="#666" font-size="24" font-weight="600">Download Ready</text>
+
+  <!-- Main Download Card -->
+  <g transform="translate(150, 120)">
+    <rect width="500" height="320" rx="16" fill="url(#card-grad)" stroke="#333" stroke-width="2" filter="url(#shadow)"/>
+    
+    <!-- Success Icon -->
+    <circle cx="250" cy="80" r="40" fill="url(#success-grad)" filter="url(#glow)"/>
+    <path d="M230 80 L245 95 L270 70" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    
+    <!-- Title -->
+    <text x="250" y="155" text-anchor="middle" fill="white" font-size="28" font-weight="700">Formatting Complete!</text>
+    
+    <!-- File Info -->
+    <g transform="translate(0, 180)">
+      <rect x="40" y="0" width="420" height="70" rx="12" fill="#1A1A1A" stroke="#333"/>
+      
+      <!-- Document Icon -->
+      <g transform="translate(60, 15)">
+        <rect width="30" height="40" rx="3" fill="#007AFF" opacity="0.2"/>
+        <rect width="30" height="40" rx="3" fill="none" stroke="#007AFF" stroke-width="2"/>
+        <line x1="8" y1="12" x2="22" y2="12" stroke="#007AFF" stroke-width="2" stroke-linecap="round"/>
+        <line x1="8" y1="20" x2="22" y2="20" stroke="#007AFF" stroke-width="2" stroke-linecap="round"/>
+        <line x1="8" y1="28" x2="18" y2="28" stroke="#007AFF" stroke-width="2" stroke-linecap="round"/>
+      </g>
+      
+      <!-- File Details -->
+      <text x="110" y="30" fill="white" font-size="18" font-weight="600">thesis_final_formatted.docx</text>
+      <text x="110" y="55" fill="#888" font-size="16">APA 7th Edition • 2.4 MB</text>
+    </g>
+    
+    <!-- Download Button -->
+    <g transform="translate(0, 265)">
+      <rect x="100" y="0" width="300" height="50" rx="12" fill="#007AFF" filter="url(#shadow)"/>
+      <text x="250" y="33" text-anchor="middle" fill="white" font-size="18" font-weight="700">Download Document</text>
+      
+      <!-- Download Icon -->
+      <g transform="translate(142.5, 16)">
+        <path d="M0 12 L0 0" stroke="white" stroke-width="3" stroke-linecap="round"/>
+        <path d="M-6 6 L0 12 L6 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M-6 18 L6 18" stroke="white" stroke-width="3" stroke-linecap="round"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- Processing Time -->
+  <g transform="translate(400, 450)">
+    <text x="0" y="25" text-anchor="middle" fill="#FFCC00" font-size="24" font-weight="700">⚡ Processed in 30s</text>
+  </g>
+</svg>

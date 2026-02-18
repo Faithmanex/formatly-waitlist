@@ -60,6 +60,39 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error("Supabase client failed to initialize. Check if the Supabase script is loaded.");
     }
 
+    // Load waitlist count immediately on page load
+    async function loadWaitlistCount() {
+        if (!supabaseClient) {
+            console.error("Cannot load waitlist count: Supabase client not available");
+            return;
+        }
+
+        try {
+            const { count, error } = await supabaseClient
+                .from('waitlist')
+                .select('*', { count: 'exact', head: true });
+
+            if (error) {
+                console.error("Error fetching waitlist count:", error);
+                return;
+            }
+
+            // Base count of 500 + actual count from database
+            const totalCount = 500 + (count || 0);
+            const countElement = document.getElementById('waitlistCount');
+            
+            if (countElement) {
+                countElement.textContent = totalCount.toLocaleString() + '+ researchers';
+                console.log("Waitlist count updated to:", totalCount);
+            }
+        } catch (err) {
+            console.error("Exception while loading waitlist count:", err);
+        }
+    }
+
+    // Load count as the first thing
+    loadWaitlistCount();
+
     const form = document.getElementById('waitlistForm');
     const submitBtn = document.getElementById('submitBtn');
     const responseMsg = document.getElementById('responseMsg');

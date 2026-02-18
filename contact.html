@@ -16,9 +16,10 @@
         p.lead { color: var(--text-muted); margin-bottom: 3rem; font-size: 1.1rem; }
         .contact-card { background: var(--glass-bg); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); padding: 3rem; border-radius: 1.5rem; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.05); }
         .email-link { display: block; font-size: 1.5rem; font-weight: 700; color: var(--text-main); text-decoration: none; margin-bottom: 2rem; }
-        .social-links { display: flex; justify-content: center; gap: 2rem; }
-        .social-links a { color: var(--text-muted); text-decoration: none; font-weight: 600; font-size: 0.875rem; transition: color 0.2s; }
+        .social-links { display: flex; justify-content: center; gap: 2rem; flex-direction: column; align-items: center; }
+        .social-links a { color: var(--text-muted); text-decoration: none; font-weight: 600; font-size: 0.875rem; transition: color 0.2s; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
         .social-links a:hover { color: var(--text-main); }
+        .social-links svg { width: 32px; height: 32px; }
     </style>
 </head>
 <body>
@@ -48,9 +49,10 @@
         <div class="contact-card reveal">
             <a href="mailto:hello@formatly.com" class="email-link">hello@formatly.com</a>
             <div class="social-links">
-                <a href="#">Twitter</a>
-                <a href="#">LinkedIn</a>
-                <a href="#">GitHub</a>
+                <a href="#">
+                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+                    Twitter
+                </a>
             </div>
         </div>
     </div>

@@ -158,5 +158,24 @@ footer {
 }
 
 @media (max-width: 640px) {
-    .nav-links { display: none; }
+    nav { height: auto; padding: 1rem 0; }
+    .nav-inner {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 1.5rem;
+        border-radius: 1rem;
+        width: 90%;
+        margin: 0 auto;
+    }
+    .nav-links {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        order: 2;
+    }
+    .logo {
+        order: 1;
+    }
 }

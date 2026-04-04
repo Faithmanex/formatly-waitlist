@@ -68,9 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
-            const { count, error } = await supabaseClient
-                .from('waitlist')
-                .select('*', { count: 'exact', head: true });
+            const { data: count, error } = await supabaseClient.rpc('get_waitlist_count');
 
             if (error) {
                 console.error("Error fetching waitlist count:", error);

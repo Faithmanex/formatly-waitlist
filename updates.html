@@ -3,27 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formatly | Updates</title>
+    <title>Formatly | Latest Updates</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="globals.css">
     <script src="./script.js" defer></script>
     <style>
-        .container-content { max-width: 800px; margin: 0 auto; padding: 4rem 1.5rem; }
-        h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 3rem; text-align: center; }
-        .update-card { background: var(--glass-bg); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); padding: 2rem; border-radius: 1.25rem; margin-bottom: 2rem; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); }
-        .date { font-size: 0.875rem; color: var(--text-muted); font-weight: 600; margin-bottom: 0.5rem; display: block; }
-        h2 { font-size: 1.5rem; margin-bottom: 1rem; }
-        p { color: var(--text-muted); margin-bottom: 1rem; }
-        .tag { display: inline-block; padding: 2px 8px; background: #eff6ff; color: #3b82f6; border-radius: 4px; font-size: 0.75rem; font-weight: 700; margin-bottom: 1rem; }
+        .container-content { 
+            max-width: 900px; 
+            margin: 0 auto; 
+            padding: 6rem 1.5rem; 
+            position: relative;
+        }
+
+        h1 { 
+            font-size: 3.5rem; 
+            font-weight: 800; 
+            margin-bottom: 5rem; 
+            text-align: center; 
+            letter-spacing: -0.05em;
+            background: linear-gradient(135deg, var(--text-main) 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Timeline Layout */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, var(--glass-border) 10%, var(--glass-border) 90%, transparent);
+            z-index: 0;
+        }
+
+        @media (min-width: 768px) {
+            .timeline::before {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        .update-card { 
+            background: var(--glass-bg); 
+            backdrop-filter: blur(24px); 
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border); 
+            padding: 2.5rem; 
+            border-radius: 1.5rem; 
+            margin-bottom: 4rem; 
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05); 
+            position: relative;
+            width: calc(100% - 60px);
+            margin-left: 60px;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.3s;
+        }
+
+        .update-card:hover {
+            transform: translateY(-5px) scale(1.01);
+            border-color: var(--primary);
+        }
+
+        /* Dot on timeline */
+        .update-card::after {
+            content: '';
+            position: absolute;
+            left: -48px;
+            top: 2.5rem;
+            width: 14px;
+            height: 14px;
+            background: var(--bg-main);
+            border: 3px solid var(--primary);
+            border-radius: 50%;
+            z-index: 1;
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
+        }
+
+        @media (min-width: 768px) {
+            .update-card {
+                width: 45%;
+                margin-left: 0;
+                margin-right: auto;
+            }
+
+            .update-card:nth-child(even) {
+                margin-left: auto;
+                margin-right: 0;
+            }
+
+            .update-card::after {
+                left: auto;
+                right: -11.5%;
+            }
+
+            .update-card:nth-child(even)::after {
+                right: auto;
+                left: -11.5%;
+            }
+        }
+
+        .date { 
+            font-size: 0.875rem; 
+            color: var(--primary); 
+            font-weight: 700; 
+            margin-bottom: 0.75rem; 
+            display: block; 
+            letter-spacing: 0.05em;
+        }
+
+        h2 { 
+            font-size: 1.75rem; 
+            font-weight: 800;
+            margin-bottom: 1.25rem; 
+            line-height: 1.2;
+        }
+
+        p { 
+            color: var(--text-muted); 
+            margin-bottom: 1.5rem; 
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+
+        .tag { 
+            display: inline-block; 
+            padding: 4px 12px; 
+            background: rgba(99, 102, 241, 0.1); 
+            color: var(--primary); 
+            border-radius: 100px; 
+            font-size: 0.75rem; 
+            font-weight: 700; 
+            margin-bottom: 1rem; 
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            text-transform: uppercase;
+        }
+
+        .back-button:hover {
+            color: var(--primary);
+            transform: translateX(-4px);
+        }
+
+        .back-button {
+            transition: all 0.2s;
+        }
     </style>
 </head>
 <body>
-    <div class="bg-mesh"><div class="blob blob-1"></div><div class="blob blob-2"></div></div>
+    <div class="bg-mesh">
+        <img src="graphics/hero-bg-dark.svg" class="hero-svg-overlay light-only" alt="">
+        <img src="graphics/hero-bg-light.svg" class="hero-svg-overlay dark-only" alt="">
+    </div>
+
     <nav>
-        <div class="nav-inner">
+        <div class="nav-inner animate-on-load">
             <a href="index.html" class="logo">
                 <img src="graphics/logo-dark.svg" class="logo-img light-only" alt="Formatly">
                 <img src="graphics/logo-white.svg" class="logo-img dark-only" alt="Formatly">
@@ -32,7 +174,7 @@
                 <a href="updates.html">Updates</a>
                 <a href="faq.html">FAQ</a>
                 <a href="contact.html">Contact us</a>
-                <button id="themeToggle" style="background:none; border:none; cursor:pointer; color:var(--text-main); margin-left: 1rem; display:flex; align-items:center;">
+                <button id="themeToggle" title="Toggle Theme" aria-label="Toggle Theme" style="background:none; border:none; cursor:pointer; color:var(--text-main); margin-left: 1rem; display:flex; align-items:center;">
                     <svg class="sun-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M17.66 6.34l1.42-1.42"></path></svg>
                     <svg class="moon-icon" style="display:none;" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
                 </button>
@@ -41,35 +183,66 @@
     </nav>
 
     <div class="container-content">
-        <a href="index.html" style="display: inline-block; margin-bottom: 2rem; color: var(--text-muted); text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 0.5rem;" class="back-button"><svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg>Home</a>
-        <h1 class="animate-on-load">Latest Updates</h1>
+        <a href="index.html" style="display: inline-block; margin-bottom: 3rem; color: var(--text-muted); text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 0.5rem;" class="back-button"><svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg>Back to Home</a>
         
-        <div class="update-card reveal">
-            <span class="date">February 9, 2026</span>
-            <span class="tag">NEW FEATURE</span>
-            <h2>AI-Powered Formatting Engine <span class="highlight">v2.0</span></h2>
-            <p>We've completely rebuilt our core formatting engine. It now supports <span class="highlight">50+ additional</span> academic styles and offers even greater precision for complex citations.</p>
-        </div>
+        <h1 class="animate-on-load">Product Timeline</h1>
+        
+        <div class="timeline">
+            <!-- April 4, 2026 -->
+            <div class="update-card reveal" id="update-2026-04-04">
+                <span class="date">April 4, 2026</span>
+                <span class="tag">MAJOR RELEASE</span>
+                <h2>Precision <span class="highlight">Style Expansion</span></h2>
+                <p>We've added full support for <strong>Harvard and Turabian</strong> citation styles. Combined with our existing APA, MLA, and Chicago engines, we now cover every major academic standard with 100% compliance. Tracked changes and advanced reference formatting are now live.</p>
+            </div>
 
-        <div class="update-card reveal">
-            <span class="date">January 28, 2026</span>
-            <span class="tag">IMPROVEMENT</span>
-            <h2>Real-time <span class="highlight">Collaborative</span> Editing</h2>
-            <p>Work with your co-authors and editors simultaneously. See changes as they happen and manage citations together in one shared document.</p>
-        </div>
+            <!-- March 31, 2026 -->
+            <div class="update-card reveal" id="update-2026-03-31">
+                <span class="date">March 31, 2026</span>
+                <span class="tag">NEW REVOLUTION</span>
+                <h2>Plagiarism <span class="highlight">Context Engine</span></h2>
+                <p>We've launched our proprietary context engine that doesn't just check for plagiarism, but analyzes how your citations support your original claims. A first in academic tool history.</p>
+            </div>
 
-        <div class="update-card reveal">
-            <span class="date">January 15, 2026</span>
-            <span class="tag">SECURITY</span>
-            <h2><span class="highlight">End-to-End Encryption</span> for All Documents</h2>
-            <p>Your research privacy is our priority. All documents uploaded to Formatly are now encrypted on your device before they ever reach our servers.</p>
+            <!-- March 25, 2026 -->
+            <div class="update-card reveal" id="update-2026-03-25">
+                <span class="date">March 25, 2026</span>
+                <span class="tag">INTEGRATION</span>
+                <h2>LaTeX & <span class="highlight">Overleaf</span> Synchronization</h2>
+                <p>Formatly now speaks LaTeX. Sync your projects directly with Overleaf and export perfectly formatted .tex files with one click. Ideal for STEM researchers.</p>
+            </div>
+
+            <!-- March 15, 2026 -->
+            <div class="update-card reveal" id="update-2026-03-15">
+                <span class="date">March 15, 2026</span>
+                <span class="tag">MAGIC FEATURE</span>
+                <h2>DOI & URL <span class="highlight">Auto-Citation</span></h2>
+                <p>Stop manual entry. Paste a DOI or a URL, and Formatly instantly fetches the metadata and generates a flawless citation in any of our 50+ supported styles.</p>
+            </div>
+
+            <!-- February 9, 2026 -->
+            <div class="update-card reveal" id="update-2026-02-09">
+                <span class="date">February 9, 2026</span>
+                <span class="tag">MAJOR UPDATE</span>
+                <h2>AI Formatting Engine <span class="highlight">v2.0</span></h2>
+                <p>Our core engine has been completely rewritten. It now processes documents 10x faster and handles complex edge cases in APA 7th and MLA 9th editions with 99.9% accuracy.</p>
+            </div>
+            
+            <!-- January 28, 2026 -->
+            <div class="update-card reveal" id="update-2026-01-28">
+                <span class="date">January 28, 2026</span>
+                <span class="tag">IMPROVEMENT</span>
+                <h2>Real-time <span class="highlight">Collaboration</span></h2>
+                <p>Invited co-authors? Now you can work together on the same document in real-time, with everyone's edits and citations syncing instantly across the globe.</p>
+            </div>
         </div>
     </div>
 
     <footer>
         <div class="container">
-            <p style="color: var(--text-muted);">(c) Formatly - A more meaningful home for research.</p>
+            <p>(c) Formatly - A more meaningful home for research.</p>
         </div>
     </footer>
 </body>
 </html>
+

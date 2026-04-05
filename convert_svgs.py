@@ -9,7 +9,7 @@ history_path = Path(os.path.expandvars(r"%LocalAppData%\Google\Chrome\User Data\
 temp_history = "history_temp.db"
 
 # Indicators used to identify blog content
-BLOG_INDICATORS = ['xvi']
+BLOG_INDICATORS = ['erome']
 
 def list_blog_urls():
     if not history_path.exists():

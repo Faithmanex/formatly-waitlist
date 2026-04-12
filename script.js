@@ -1,4 +1,53 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Countdown Timer
+    const targetDate = new Date('2026-04-13T07:01:00Z'); // April 13, 2026 12:01 AM PDT = 07:01 UTC
+    const daysEl = document.getElementById('days');
+    const hoursEl = document.getElementById('hours');
+    const minutesEl = document.getElementById('minutes');
+    const secondsEl = document.getElementById('seconds');
+    const launchDateEl = document.getElementById('launchDate');
+    const countdownContainer = document.querySelector('.countdown-container');
+
+    function updateCountdown() {
+        const now = new Date();
+        const diff = targetDate - now;
+
+        if (diff <= 0) {
+            if (countdownContainer) {
+                countdownContainer.innerHTML = '<a href="https://formatlyapp.com" style="font-size: 1.5rem; font-weight: 800; color: var(--primary); text-decoration: none;">Formatly is live! Click here to go to the app →</a>';
+            }
+            return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        if (daysEl) daysEl.textContent = days;
+        if (hoursEl) hoursEl.textContent = hours;
+        if (minutesEl) minutesEl.textContent = minutes;
+        if (secondsEl) secondsEl.textContent = seconds;
+
+        if (launchDateEl) {
+            const localDate = targetDate.toLocaleDateString('en-US', { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: 'numeric',
+                minute: '2-digit',
+                timeZoneName: 'short'
+            });
+            launchDateEl.textContent = localDate;
+        }
+    }
+
+    if (daysEl && hoursEl && minutesEl && secondsEl) {
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    }
+
     // Scroll Reveal Animation logic
     const reveals = document.querySelectorAll('.reveal');
     
